@@ -1,87 +1,69 @@
+/* General layout */
 body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  background: #0f172a;
+  background-color: #0f172a; /* dark background */
   color: #e5e7eb;
-  font-family: 'Poppins', sans-serif;
-  transition: background 0.5s, color 0.5s;
+  flex-direction: column;
 }
 
-.settings-top {
-  margin: 15px 0;
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
+.app-container {
+  text-align: center;
 }
 
-.settings-top label {
-  font-size: 16px;
-}
-
-.container {
-  position: relative;
-  margin-bottom: 50px; /* reduced so text is separate */
-  margin-top: 50px;    /* space below timing inputs */
-}
-
-.circle {
-  width: 180px;
-  height: 180px;
+/* Circle animation */
+#circle {
+  width: 150px;
+  height: 150px;
+  margin: 20px auto;
   border-radius: 50%;
-  background: #38bdf8;
+  background-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56,189,248,0.5);
-  transition: transform linear, box-shadow linear;
+  transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
 }
 
-.countdown {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 48px;
-  font-weight: 700;
-  color: #020617;
+/* Countdown number */
+#countdown {
+  font-size: 2rem;
+  margin-top: 10px;
 }
 
-h1 {
-  font-size: 28px;
-  margin: 15px 0 0 0; /* moved down slightly */
-  font-weight: 600;
-  z-index: 1;
-}
-
-.controls {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
+/* Controls */
+.controls button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
+  background-color: #38bdf8;
+  color: #0f172a;
   cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
   transition: background 0.3s;
 }
 
-button:hover {
-  opacity: 0.9;
+.controls button:hover {
+  background-color: #22d3ee;
 }
 
-input {
+/* Timing inputs */
+.timings {
+  margin-top: 15px;
+}
+
+.timings label {
+  margin: 0 5px;
+  font-size: 0.9rem;
+}
+
+.timings input {
   width: 50px;
-  font-size: 16px;
-  padding: 4px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #38bdf8;
+  text-align: center;
+  margin-left: 3px;
 }
