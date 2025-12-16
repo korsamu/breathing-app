@@ -3,34 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Breathing App</title>
+  <title>4-7-8 Breathing App</title>
 
-  <!-- Link to CSS -->
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link to local CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app-container">
-    <h1 id="text">Ready?</h1>
-    <div id="circle"></div>
-    <div id="countdown"></div>
-
-    <!-- Controls -->
-    <div class="controls">
-      <button id="startBtn">Start</button>
-      <button id="pauseBtn">Pause</button>
-      <button id="stopBtn">Stop</button>
-      <button id="toggleThemeBtn">Toggle Dark/Light</button>
-    </div>
-
-    <!-- Timing customization -->
-    <div class="timings">
-      <label>Inhale: <input id="inhaleInput" type="number" value="4" min="0"></label>
-      <label>Hold: <input id="holdInput" type="number" value="7" min="0"></label>
-      <label>Exhale: <input id="exhaleInput" type="number" value="8" min="0"></label>
-    </div>
+  <!-- Timing settings at top -->
+  <div class="settings-top">
+    <label>Inhale (sec): <input type="number" id="inhaleInput" value="4" min="0"></label>
+    <label>Hold (sec): <input type="number" id="holdInput" value="7" min="0"></label>
+    <label>Exhale (sec): <input type="number" id="exhaleInput" value="8" min="0"></label>
+    <label>Hold (sec): <input type="number" id="hold2Input" value="0" min="0"></label>
   </div>
 
-  <!-- Include JS at the end of body -->
+  <!-- Breathing circle and countdown -->
+  <div class="container">
+    <div class="circle" id="circle"></div>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <!-- Status text -->
+  <h1 id="text">Ready?</h1>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button id="startBtn">Start</button>
+    <button id="pauseBtn">Pause</button>
+    <button id="stopBtn">Stop</button>
+    <button id="toggleThemeBtn">Dark / Light</button>
+  </div>
+
+  <!-- Link to local JS -->
   <script src="script.js"></script>
 </body>
 </html>
