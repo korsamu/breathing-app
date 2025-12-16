@@ -19,7 +19,7 @@ body {
   gap: 15px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 .settings-top label {
@@ -52,12 +52,12 @@ body {
   background-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56,189,248,0.5);
   transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .countdown {
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 /* --- Main status text --- */
