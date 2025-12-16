@@ -53,14 +53,14 @@ body {
   box-shadow: 0 0 20px rgba(56,189,248,0.5);
   transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
 
-  position: relative; /* Allows countdown positioning */
+  position: absolute; /* Allows countdown positioning */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .countdown {
-  position: static; /* Position relative to .circle */
+  position: absolute; /* Position relative to .circle */
   top: 5000%;           /* Lower inside the circle */
   left: 50%;
   transform: translate(-50%, -50%); /* Center horizontally, adjust vertical */
