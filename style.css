@@ -18,7 +18,7 @@ body {
   gap: 15px; /* Space between inputs */
   flex-wrap: wrap; /* Wrap on small screens */
   justify-content: center;
-  margin-bottom: 30px; /* Space below inputs */
+  margin-bottom: 60px; /* Space below inputs */
 }
 
 .settings-top label {
