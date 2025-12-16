@@ -1,7 +1,7 @@
 /* ------------------ GLOBAL ------------------ */
 body {
   margin: 0;
-  padding-top: 80px;           /* moves EVERYTHING down from top of screen */
+  padding-top: 90px;           /* moves EVERYTHING down from top of screen */
   font-family: 'Poppins', sans-serif;
   background-color: #0f172a;
   color: #e5e7eb;
@@ -19,7 +19,7 @@ body {
   gap: 15px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 40px;         /* space between inputs and circle */
+  margin-bottom: 400px;         /* space between inputs and circle */
 }
 
 .settings-top label {
