@@ -9,7 +9,9 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  padding: 20px;
+    padding-top: 80px; /* move everything down */
+  padding-left: 20px;
+  padding-right: 20px;
   box-sizing: border-box;
 }
 
