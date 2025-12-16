@@ -60,7 +60,7 @@ body {
 
 .countdown {
   position: absolute; /* Position relative to .circle */
-  top: 5%;           /* Lower inside the circle */
+  top: 5000%;           /* Lower inside the circle */
   left: 50%;
   transform: translate(-50%, -50%); /* Center horizontally, adjust vertical */
   font-size: 2rem;
