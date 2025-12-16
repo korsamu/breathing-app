@@ -1,69 +1,117 @@
-/* General layout */
+/* --- Global Styles --- */
 body {
   margin: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #0f172a; /* dark background */
+  font-family: 'Poppins', sans-serif;
+  background-color: #0f172a; /* Dark background */
   color: #e5e7eb;
+  display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.app-container {
-  text-align: center;
+/* --- Top settings inputs --- */
+.settings-top {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
-/* Circle animation */
-#circle {
-  width: 150px;
-  height: 150px;
-  margin: 20px auto;
-  border-radius: 50%;
-  background-color: #38bdf8;
-  box-shadow: 0 0 20px rgba(56,189,248,0.5);
-  transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
+.settings-top label {
+  font-size: 0.95rem;
 }
 
-/* Countdown number */
-#countdown {
-  font-size: 2rem;
-  margin-top: 10px;
-}
-
-/* Controls */
-.controls button {
-  margin: 5px;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #38bdf8;
-  color: #0f172a;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.controls button:hover {
-  background-color: #22d3ee;
-}
-
-/* Timing inputs */
-.timings {
-  margin-top: 15px;
-}
-
-.timings label {
-  margin: 0 5px;
-  font-size: 0.9rem;
-}
-
-.timings input {
+.settings-top input[type=number] {
   width: 50px;
-  padding: 3px;
+  padding: 3px 5px;
   border-radius: 5px;
   border: 1px solid #38bdf8;
   text-align: center;
   margin-left: 3px;
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+/* --- Circle and countdown --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
+  transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
+  margin-bottom: 15px;
+}
+
+.countdown {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+/* --- Main status text --- */
+#text {
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+/* --- Control buttons --- */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.controls button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #38bdf8;
+  color: #0f172a;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.controls button:hover {
+  background-color: #22d3ee;
+  transform: scale(1.05);
+}
+
+/* --- Dark / Light toggle (body changes via JS) --- */
+body.light {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+body.light input[type=number] {
+  background-color: #f3f4f6;
+  color: #111827;
+  border: 1px solid #38bdf8;
+}
+
+/* --- Responsive --- */
+@media (max-width: 500px) {
+  .settings-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .controls button {
+    width: 100%;
+  }
 }
