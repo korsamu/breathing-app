@@ -1,87 +1,75 @@
-/* ------------------ GLOBAL ------------------ */
+/* ===== Global ===== */
 body {
   margin: 0;
-  padding-top: 90px;           /* moves EVERYTHING down from top of screen */
+  padding-top: 80px;              /* Moves everything lower */
   font-family: 'Poppins', sans-serif;
-  background-color: #0f172a;
+  background: #0f172a;
   color: #e5e7eb;
 
   display: flex;
   flex-direction: column;
-  align-items: center;         /* center everything horizontally */
+  align-items: center;
   min-height: 100vh;
-  box-sizing: border-box;
 }
 
-/* ------------------ TOP SETTINGS ------------------ */
+/* ===== Top Inputs ===== */
 .settings-top {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 400px;         /* space between inputs and circle */
+  flex-wrap: wrap;
+  margin-bottom: 40px;            /* Space before circle */
 }
 
-.settings-top label {
-  font-size: 0.95rem;
-}
-
-.settings-top input[type=number] {
+.settings-top input {
   width: 50px;
-  padding: 4px 6px;
-  margin-left: 4px;
   text-align: center;
-
   border-radius: 6px;
   border: 1px solid #38bdf8;
-  background-color: #0f172a;
+  background: #0f172a;
   color: #e5e7eb;
 }
 
-/* ------------------ CIRCLE WRAPPER ------------------ */
+/* ===== Circle Wrapper ===== */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  margin-top: 20px;            /* 🔥 MOVE CIRCLE DOWN/UP HERE */
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-/* ------------------ CIRCLE ------------------ */
+/* ===== Circle ===== */
 .circle {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-color: #38bdf8;
+  background: #38bdf8;
   box-shadow: 0 0 25px rgba(56,189,248,0.6);
 
-  position: relative;          /* anchor for countdown */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;             /* REQUIRED for countdown */
 }
 
-/* ------------------ COUNTDOWN ------------------ */
+/* ===== Countdown ===== */
 .countdown {
   position: absolute;
-  top: 65%;                    /* 🔥 MOVE NUMBER UP/DOWN INSIDE CIRCLE */
+  top: 60%;                       /* Move number lower */
   left: 50%;
   transform: translate(-50%, -50%);
 
   font-size: 2.2rem;
-  font-weight: 900;
+  font-weight: 600;
   color: #0f172a;
+
+  z-index: 10;                    /* GUARANTEES visibility */
 }
 
-/* ------------------ PHASE TEXT ------------------ */
+/* ===== Phase Text ===== */
 #text {
   font-size: 2rem;
-  margin-top: 15px;
   margin-bottom: 25px;
 }
 
-/* ------------------ BUTTONS ------------------ */
+/* ===== Buttons ===== */
 .controls {
   display: flex;
   gap: 12px;
@@ -90,41 +78,26 @@ body {
 }
 
 .controls button {
-  padding: 10px 22px;
+  padding: 10px 18px;
   font-size: 1rem;
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-
-  background-color: #38bdf8;
+  background: #38bdf8;
   color: #0f172a;
-
-  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .controls button:hover {
-  transform: scale(1.05);
-  background-color: #22d3ee;
+  background: #22d3ee;
 }
 
-/* ------------------ LIGHT MODE ------------------ */
+/* ===== Light Mode ===== */
 body.light {
-  background-color: #f3f4f6;
+  background: #f3f4f6;
   color: #111827;
 }
 
-body.light input[type=number] {
-  background-color: #f3f4f6;
+body.light input {
+  background: #ffffff;
   color: #111827;
-}
-
-/* ------------------ MOBILE ------------------ */
-@media (max-width: 500px) {
-  .settings-top {
-    flex-direction: column;
-  }
-
-  .controls button {
-    width: 100%;
-  }
 }
