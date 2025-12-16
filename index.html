@@ -23,3 +23,40 @@
   <button id="toggleThemeBtn">🌙 / ☀️</button>
 </div>
 "Add index.html"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathing App</title>
+
+  <!-- Link your CSS first -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- App container -->
+  <div class="app-container">
+    <h1 id="text">Ready?</h1>
+    <div id="circle"></div>
+    <div id="countdown"></div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="startBtn">Start</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="stopBtn">Stop</button>
+      <button id="toggleThemeBtn">Toggle Dark/Light</button>
+    </div>
+
+    <!-- Customize timings -->
+    <div class="timings">
+      <label>Inhale: <input id="inhaleInput" type="number" value="4" min="0"></label>
+      <label>Hold: <input id="holdInput" type="number" value="7" min="0"></label>
+      <label>Exhale: <input id="exhaleInput" type="number" value="8" min="0"></label>
+    </div>
+  </div>
+
+  <!-- Include your JS at the end of body -->
+  <script src="script.js"></script>
+</body>
+</html>
