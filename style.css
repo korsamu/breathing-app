@@ -55,10 +55,23 @@ body {
   margin-bottom: 30px;
 }
 
+
+  /* Center countdown inside circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* optional for absolute positioning if needed */
+}
+
 .countdown {
   font-size: 2rem;
-  margin-bottom: 60px;
+  font-weight: 600;
+  color: #0f172a;
+
+  /* Prevent scaling with parent */
+  transform: scale(1);
 }
+
 
 /* --- Main status text --- */
 #text {
