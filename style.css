@@ -1,0 +1,87 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #0f172a;
+  color: #e5e7eb;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.5s, color 0.5s;
+}
+
+.settings-top {
+  margin: 15px 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.settings-top label {
+  font-size: 16px;
+}
+
+.container {
+  position: relative;
+  margin-bottom: 50px; /* reduced so text is separate */
+  margin-top: 50px;    /* space below timing inputs */
+}
+
+.circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 20px rgba(56,189,248,0.5);
+  transition: transform linear, box-shadow linear;
+}
+
+.countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 700;
+  color: #020617;
+}
+
+h1 {
+  font-size: 28px;
+  margin: 15px 0 0 0; /* moved down slightly */
+  font-weight: 600;
+  z-index: 1;
+}
+
+.controls {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+input {
+  width: 50px;
+  font-size: 16px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
