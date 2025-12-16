@@ -15,12 +15,11 @@ let timerInterval;
 let isPaused = false;
 let isStopped = false;
 
-// Phase configuration
+// Phases
 let phases = [];
 let currentPhaseIndex = 0;
 let phaseRemaining = 0;
 
-// Start breathing
 function startBreathing() {
   isPaused = false;
   isStopped = false;
@@ -29,7 +28,6 @@ function startBreathing() {
   const holdSec = parseInt(holdInput.value) || 0;
   const exhaleSec = parseInt(exhaleInput.value) || 0;
 
-  // Define all 4 phases
   phases = [
     { label: "Inhale", duration: inhaleSec, scale: 1.5 },
     { label: "Hold", duration: holdSec, scale: 1.5 },
@@ -37,7 +35,6 @@ function startBreathing() {
     { label: "Hold", duration: holdSec, scale: 1.5 }
   ];
 
-  // Filter out zero-duration phases, but keep order
   phases = phases.filter(p => p.duration >= 0);
 
   if (phases.length === 0) {
@@ -57,7 +54,6 @@ function startBreathing() {
   timerInterval = setInterval(tick, 1000);
 }
 
-// Per-second tick function
 function tick() {
   if (isPaused || isStopped) return;
 
@@ -67,10 +63,8 @@ function tick() {
   }
 
   if (phaseRemaining <= 0) {
-    // Move to next phase
     currentPhaseIndex++;
     if (currentPhaseIndex >= phases.length) {
-      // Restart cycle
       currentPhaseIndex = 0;
     }
     phaseRemaining = phases[currentPhaseIndex].duration;
@@ -78,13 +72,11 @@ function tick() {
     if (phaseRemaining > 0) {
       updatePhaseVisual(phases[currentPhaseIndex]);
     } else {
-      // If next phase is 0, immediately tick again
-      tick();
+      tick(); // skip zero-duration phase
     }
   }
 }
 
-// Update text and circle animation
 function updatePhaseVisual(phase) {
   text.innerText = phase.label;
   circle.style.transition = `transform ${phase.duration}s ease-in-out, box-shadow ${phase.duration}s ease-in-out`;
