@@ -59,7 +59,7 @@ body {
 }
 
 .countdown {
-  position: relative; /* Position relative to .circle */
+  position: sticky; /* Position relative to .circle */
   top: 65%;           /* Lower inside the circle */
   left: 50%;
   transform: translate(-50%, -50%); /* Center horizontally, adjust vertical */
