@@ -1,24 +1,25 @@
-/* --- Global Styles --- */
+/* ------------------ GLOBAL ------------------ */
 body {
-  margin: 0; /* Remove default browser margin */
-  padding: 90px 20px 20px 20px; /* Top padding moves everything lower */
+  margin: 0;
+  padding-top: 80px;           /* moves EVERYTHING down from top of screen */
   font-family: 'Poppins', sans-serif;
-  background-color: #0f172a; /* Dark background */
-  color: #e5e7eb; /* Light text */
+  background-color: #0f172a;
+  color: #e5e7eb;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;         /* center everything horizontally */
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* --- Top settings inputs --- */
+/* ------------------ TOP SETTINGS ------------------ */
 .settings-top {
   display: flex;
-  gap: 15px; /* Space between inputs */
-  flex-wrap: wrap; /* Wrap on small screens */
+  gap: 15px;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 60px; /* Space below inputs */
+  margin-bottom: 40px;         /* space between inputs and circle */
 }
 
 .settings-top label {
@@ -27,100 +28,100 @@ body {
 
 .settings-top input[type=number] {
   width: 50px;
-  padding: 3px 5px;
-  border-radius: 5px;
-  border: 1px solid #38bdf8;
+  padding: 4px 6px;
+  margin-left: 4px;
   text-align: center;
-  margin-left: 3px;
+
+  border-radius: 6px;
+  border: 1px solid #38bdf8;
   background-color: #0f172a;
   color: #e5e7eb;
 }
 
-/* --- Circle and countdown --- */
+/* ------------------ CIRCLE WRAPPER ------------------ */
 .container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 30px; /* moves circle lower */
-  margin-bottom: 60px; /* Space below container */
+
+  margin-top: 20px;            /* 🔥 MOVE CIRCLE DOWN/UP HERE */
+  margin-bottom: 20px;
 }
 
+/* ------------------ CIRCLE ------------------ */
 .circle {
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   background-color: #38bdf8;
-  box-shadow: 0 0 20px rgba(56,189,248,0.5);
-  transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
+  box-shadow: 0 0 25px rgba(56,189,248,0.6);
 
-  position: absolute; /* Allows countdown positioning */
+  position: relative;          /* anchor for countdown */
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
+/* ------------------ COUNTDOWN ------------------ */
 .countdown {
-  position: absolute; /* Position relative to .circle */
-  top: 5000%;           /* Lower inside the circle */
+  position: absolute;
+  top: 65%;                    /* 🔥 MOVE NUMBER UP/DOWN INSIDE CIRCLE */
   left: 50%;
-  transform: translate(-50%, -50%); /* Center horizontally, adjust vertical */
-  font-size: 2rem;
+  transform: translate(-50%, -50%);
+
+  font-size: 2.2rem;
   font-weight: 600;
   color: #0f172a;
-
-  /* Prevent scaling with parent */
-  transform-origin: center;
 }
 
-/* --- Main status text --- */
+/* ------------------ PHASE TEXT ------------------ */
 #text {
   font-size: 2rem;
-  margin-bottom: 25px; /* Space below text */
+  margin-top: 15px;
+  margin-bottom: 25px;
 }
 
-/* --- Control buttons --- */
+/* ------------------ BUTTONS ------------------ */
 .controls {
   display: flex;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px; /* Space between buttons */
-  margin-bottom: 20px; /* Space below buttons */
 }
 
 .controls button {
-  margin: 5px; /* Space around each button */
-  padding: 10px 20px;
+  padding: 10px 22px;
   font-size: 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
+  cursor: pointer;
+
   background-color: #38bdf8;
   color: #0f172a;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
+
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .controls button:hover {
-  background-color: #22d3ee;
   transform: scale(1.05);
+  background-color: #22d3ee;
 }
 
-/* --- Dark / Light toggle --- */
+/* ------------------ LIGHT MODE ------------------ */
 body.light {
-  background-color: #f3f4f6; /* Light background */
-  color: #111827; /* Dark text */
+  background-color: #f3f4f6;
+  color: #111827;
 }
 
 body.light input[type=number] {
   background-color: #f3f4f6;
   color: #111827;
-  border: 1px solid #38bdf8;
 }
 
-/* --- Responsive --- */
+/* ------------------ MOBILE ------------------ */
 @media (max-width: 500px) {
   .settings-top {
     flex-direction: column;
-    align-items: center;
   }
 
   .controls button {
