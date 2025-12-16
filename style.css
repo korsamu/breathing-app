@@ -16,10 +16,10 @@ body {
 /* --- Top settings inputs --- */
 .settings-top {
   display: flex;
-  gap: 15px;
+  gap: 25px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 120px;
 }
 
 .settings-top label {
@@ -57,7 +57,7 @@ body {
 
 .countdown {
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 }
 
 /* --- Main status text --- */
