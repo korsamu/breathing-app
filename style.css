@@ -52,7 +52,7 @@ body {
 /* ===== Countdown ===== */
 .countdown {
   position: absolute;
-  top: 60%;                       /* Move number lower */
+  top: 100%;                       /* Move number lower */
   left: 50%;
   transform: translate(-50%, -50%);
 
