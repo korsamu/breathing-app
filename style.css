@@ -1,27 +1,24 @@
 /* --- Global Styles --- */
 body {
-  margin: 0;
+  margin: 0; /* Remove default browser margin */
+  padding: 80px 20px 20px 20px; /* Top padding moves everything lower */
   font-family: 'Poppins', sans-serif;
   background-color: #0f172a; /* Dark background */
-  color: #e5e7eb;
+  color: #e5e7eb; /* Light text */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   min-height: 100vh;
-    padding-top: 80px; /* move everything down */
-  padding-left: 20px;
-  padding-right: 20px;
   box-sizing: border-box;
 }
 
 /* --- Top settings inputs --- */
 .settings-top {
   display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
+  gap: 15px; /* Space between inputs */
+  flex-wrap: wrap; /* Wrap on small screens */
   justify-content: center;
-  margin-bottom: 120px;
+  margin-bottom: 30px; /* Space below inputs */
 }
 
 .settings-top label {
@@ -44,50 +41,40 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Space below container */
 }
 
 .circle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56,189,248,0.5);
   transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
-}
 
-
-  /* Center countdown inside circle */
+  position: relative; /* Allows countdown positioning */
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* optional for absolute positioning if needed */
 }
 
 .countdown {
-  position: absolute; /* position relative to the circle */
-  top: 600%; /* move it lower inside the circle */
+  position: absolute; /* Position relative to .circle */
+  top: 65%;           /* Lower inside the circle */
   left: 50%;
-  transform: translate(-50%, -50%); /* center horizontally and adjust vertical */
+  transform: translate(-50%, -50%); /* Center horizontally, adjust vertical */
   font-size: 2rem;
   font-weight: 600;
   color: #0f172a;
-}
-
 
   /* Prevent scaling with parent */
-  transform: scale(1);
+  transform-origin: center;
 }
-
 
 /* --- Main status text --- */
 #text {
   font-size: 2rem;
-  margin-bottom: 25px;
+  margin-bottom: 25px; /* Space below text */
 }
 
 /* --- Control buttons --- */
@@ -95,12 +82,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 10px; /* Space between buttons */
+  margin-bottom: 20px; /* Space below buttons */
 }
 
 .controls button {
-  margin: 5px;
+  margin: 5px; /* Space around each button */
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
@@ -116,10 +103,10 @@ body {
   transform: scale(1.05);
 }
 
-/* --- Dark / Light toggle (body changes via JS) --- */
+/* --- Dark / Light toggle --- */
 body.light {
-  background-color: #f3f4f6;
-  color: #111827;
+  background-color: #f3f4f6; /* Light background */
+  color: #111827; /* Dark text */
 }
 
 body.light input[type=number] {
