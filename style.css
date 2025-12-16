@@ -1,7 +1,7 @@
 /* --- Global Styles --- */
 body {
   margin: 0; /* Remove default browser margin */
-  padding: 80px 20px 20px 20px; /* Top padding moves everything lower */
+  padding: 90px 20px 20px 20px; /* Top padding moves everything lower */
   font-family: 'Poppins', sans-serif;
   background-color: #0f172a; /* Dark background */
   color: #e5e7eb; /* Light text */
