@@ -41,8 +41,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px; /* moves circle lower */
-  margin-bottom: 600px; /* Space below container */
+  margin-top: 30px; /* moves circle lower */
+  margin-bottom: 60px; /* Space below container */
 }
 
 .circle {
