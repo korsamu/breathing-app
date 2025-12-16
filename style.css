@@ -46,13 +46,16 @@ body {
 }
 
 .circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150px;
   height: 150px;
   border-radius: 50%;
   background-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56,189,248,0.5);
   transition: transform 1s ease-in-out, box-shadow 1s ease-in-out;
-  margin-bottom: 30px;
 }
 
 
