@@ -5,20 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Breathing App</title>
 
-  <!-- Basic SEO -->
-  <meta name="description" content="Simple guided breathing app to reduce stress and improve focus." />
-  <meta name="keywords" content="breathing app, meditation, relaxation, stress relief" />
-
   <style>
     body {
       margin: 0;
       height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       background: #0f172a;
+      color: #e5e7eb;
       font-family: Arial, sans-serif;
-      color: #ffffff;
     }
 
     .container {
@@ -28,21 +24,17 @@
     #breathingText {
       font-size: 3rem;
       margin-bottom: 30px;
-      letter-spacing: 1px;
+      font-weight: 600;
     }
 
     button {
-      padding: 12px 30px;
-      font-size: 1rem;
+      padding: 14px 28px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 25px;
+      border-radius: 999px;
       cursor: pointer;
       background: #38bdf8;
       color: #020617;
-    }
-
-    button:hover {
-      opacity: 0.9;
     }
   </style>
 </head>
@@ -50,36 +42,30 @@
 <body>
   <div class="container">
     <div id="breathingText">Ready</div>
-    <button id="startBtn">Start</button>
+    <button id="startBtn">Start Breathing</button>
   </div>
 
   <script>
     /* =========================
-       BREATHING CONFIG
-    ========================= */
+       BREATHING PHASES
+    ========================== */
     const phases = [
       { name: "Inhale", duration: 4000 },
-      { name: "Hold", duration: 4000 },
+      { name: "Hold (After Inhale)", duration: 4000 },
       { name: "Exhale", duration: 6000 },
-      { name: "Hold", duration: 2000 }
+      { name: "Hold (After Exhale)", duration: 2000 }
     ];
 
     /* =========================
        STATE
-    ========================= */
+    ========================== */
     let phaseIndex = 0;
     let timer = null;
     let isRunning = false;
 
-    /* =========================
-       ELEMENTS
-    ========================= */
     const textEl = document.getElementById("breathingText");
     const startBtn = document.getElementById("startBtn");
 
-    /* =========================
-       CORE LOGIC
-    ========================= */
     function startBreathing() {
       if (isRunning) return;
 
@@ -100,19 +86,6 @@
       }, phase.duration);
     }
 
-    /* =========================
-       OPTIONAL STOP / RESET
-    ========================= */
-    function stopBreathing() {
-      isRunning = false;
-      clearTimeout(timer);
-      timer = null;
-      textEl.textContent = "Ready";
-    }
-
-    /* =========================
-       EVENTS
-    ========================= */
     startBtn.addEventListener("click", startBreathing);
   </script>
 </body>
