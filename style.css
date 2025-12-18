@@ -1,42 +1,47 @@
-/* ====== Basic Reset ====== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+// ====== Breathing Phases ======
+const phases = [
+  { name: "Inhale", duration: 4000 },
+  { name: "Hold", duration: 4000 },
+  { name: "Exhale", duration: 6000 },
+  { name: "Hold", duration: 2000 }
+];
+
+// ====== State ======
+let phaseIndex = 0;
+let timer = null;
+let isRunning = false;
+
+// ====== DOM Elements ======
+const textEl = document.getElementById("breathingText");
+const startBtn = document.getElementById("startBtn");
+
+// ====== Core Logic ======
+function startBreathing() {
+  if (isRunning) return; // prevent multiple starts
+  isRunning = true;
+  phaseIndex = 0;
+  runPhase();
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #0f172a;
-  font-family: Arial, sans-serif;
-  color: #e5e7eb;
+function runPhase() {
+  if (!isRunning) return;
+
+  const phase = phases[phaseIndex];
+  textEl.textContent = phase.name;
+
+  timer = setTimeout(() => {
+    phaseIndex = (phaseIndex + 1) % phases.length;
+    runPhase();
+  }, phase.duration);
 }
 
-.container {
-  text-align: center;
+// ====== Optional Stop / Reset ======
+function stopBreathing() {
+  isRunning = false;
+  clearTimeout(timer);
+  timer = null;
+  textEl.textContent = "Ready";
 }
 
-#breathingText {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
-button {
-  padding: 14px 28px;
-  font-size: 1.2rem;
-  border: none;
-  border-radius: 999px;
-  cursor: pointer;
-  background: #38bdf8;
-  color: #020617;
-  transition: all 0.15s ease;
-}
-
-button:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
+// ====== Event Listener ======
+startBtn.addEventListener("click", startBreathing);
