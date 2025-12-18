@@ -3,7 +3,7 @@ const phases = [
   { name: "Inhale", duration: 4000 },
   { name: "Hold", duration: 4000 },
   { name: "Exhale", duration: 6000 },
-  
+  { name: "Hold", duration: 2000 }
 ];
 
 // ====== State ======
