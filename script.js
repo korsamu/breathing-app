@@ -11,82 +11,86 @@ const inhaleInput = document.getElementById("inhaleInput");
 const holdInput = document.getElementById("holdInput");
 const exhaleInput = document.getElementById("exhaleInput");
 
-let timerInterval;
+let interval;
+let timeoutId;
 let isPaused = false;
 let isStopped = false;
 
-// Phases
-let phases = [];
-let currentPhaseIndex = 0;
-let phaseRemaining = 0;
+// Countdown function
+function startCountdown(seconds) {
+  clearInterval(interval);
+  countdown.innerText = seconds > 0 ? seconds : "";
+  if (seconds <= 0) return;
 
-function startBreathing() {
-  isPaused = false;
-  isStopped = false;
+  interval = setInterval(() => {
+    if (!isPaused) {
+      seconds--;
+      countdown.innerText = seconds > 0 ? seconds : "";
+      if (seconds <= 0) clearInterval(interval);
+    }
+  }, 1000);
+}
+
+// Animate circle and text
+function breathePhase(label, duration, scale) {
+  if (isStopped || duration <= 0) return;
+  const displayLabel = label.includes("Hold") ? "Hold" : label;
+  text.innerText = displayLabel;
+  circle.style.transition = `transform ${duration}s ease-in-out, box-shadow ${duration}s ease-in-out`;
+  circle.style.transform = `scale(${scale})`;
+  circle.style.boxShadow = `0 0 ${scale * 15}px rgba(56,189,248,${scale / 1.5})`;
+  startCountdown(duration);
+}
+
+// Scheduler for phases
+function runCycle() {
+  if (isStopped) return;
 
   const inhaleSec = parseInt(inhaleInput.value) || 0;
   const holdSec = parseInt(holdInput.value) || 0;
   const exhaleSec = parseInt(exhaleInput.value) || 0;
 
-  phases = [
+  const phases = [
     { label: "Inhale", duration: inhaleSec, scale: 1.5 },
-    { label: "Hold", duration: holdSec, scale: 1.5 },
+    { label: "Hold1", duration: holdSec, scale: 1.5 },
     { label: "Exhale", duration: exhaleSec, scale: 1 },
-    { label: "Hold", duration: holdSec, scale: 1.5 }
+    { label: "Hold2", duration: holdSec, scale: 1.5 },
   ];
 
-  phases = phases.filter(p => p.duration >= 0);
+  let index = 0;
 
-  if (phases.length === 0) {
-    text.innerText = "Ready?";
-    countdown.innerText = "";
-    circle.style.transform = "scale(1)";
-    circle.style.boxShadow = "0 0 20px rgba(56,189,248,0.5)";
-    return;
-  }
+  function nextPhase() {
+    if (isStopped) return;
 
-  currentPhaseIndex = 0;
-  phaseRemaining = phases[currentPhaseIndex].duration;
-
-  updatePhaseVisual(phases[currentPhaseIndex]);
-
-  clearInterval(timerInterval);
-  timerInterval = setInterval(tick, 1000);
-}
-
-function tick() {
-  if (isPaused || isStopped) return;
-
-  if (phaseRemaining > 0) {
-    phaseRemaining--;
-    countdown.innerText = phaseRemaining > 0 ? phaseRemaining : "";
-  }
-
-  if (phaseRemaining <= 0) {
-    currentPhaseIndex++;
-    if (currentPhaseIndex >= phases.length) {
-      currentPhaseIndex = 0;
+    // Find the next phase with duration > 0
+    while (index < phases.length && phases[index].duration <= 0) {
+      index++;
     }
-    phaseRemaining = phases[currentPhaseIndex].duration;
 
-    if (phaseRemaining > 0) {
-      updatePhaseVisual(phases[currentPhaseIndex]);
-    } else {
-      tick(); // skip zero-duration phase
+    if (index >= phases.length) {
+      // Restart the cycle
+      index = 0;
+      nextPhase();
+      return;
     }
-  }
-}
 
-function updatePhaseVisual(phase) {
-  text.innerText = phase.label;
-  circle.style.transition = `transform ${phase.duration}s ease-in-out, box-shadow ${phase.duration}s ease-in-out`;
-  circle.style.transform = `scale(${phase.scale})`;
-  circle.style.boxShadow = `0 0 ${phase.scale * 15}px rgba(56,189,248,${phase.scale/1.5})`;
-  countdown.innerText = phase.duration;
+    const phase = phases[index];
+    breathePhase(phase.label, phase.duration, phase.scale);
+    index++;
+    timeoutId = setTimeout(nextPhase, phase.duration * 1000);
+  }
+
+  nextPhase();
 }
 
 // Controls
-startBtn.addEventListener("click", startBreathing);
+startBtn.addEventListener("click", () => {
+  isPaused = false;
+  isStopped = false;
+  clearInterval(interval);
+  clearTimeout(timeoutId);
+  runCycle();
+});
 
 pauseBtn.addEventListener("click", () => {
   isPaused = !isPaused;
@@ -95,7 +99,8 @@ pauseBtn.addEventListener("click", () => {
 
 stopBtn.addEventListener("click", () => {
   isStopped = true;
-  clearInterval(timerInterval);
+  clearInterval(interval);
+  clearTimeout(timeoutId);
   countdown.innerText = "";
   text.innerText = "Ready?";
   circle.style.transform = "scale(1)";
