@@ -1,43 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Breathe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing App</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Basic SEO -->
+  <meta name="description" content="Simple guided breathing app to reduce stress and improve focus." />
+  <meta name="keywords" content="breathing app, meditation, relaxation, stress relief" />
 
-  <!-- Link to local CSS -->
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f172a;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    #breathingText {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    button {
+      padding: 12px 30px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
+
 <body>
-  <!-- Timing settings at top -->
-  <div class="settings-top">
-    <label>Inhale (sec): <input type="number" id="inhaleInput" value="4" min="0"></label>
-    <label>Hold (sec): <input type="number" id="holdInput" value="7" min="0"></label>
-    <label>Exhale (sec): <input type="number" id="exhaleInput" value="8" min="0"></label>
-    <label>Hold (sec): <input type="number" id="hold2Input" value="0" min="0"></label>
-  </div>
-
-  <!-- Breathing circle and countdown -->
   <div class="container">
-    <div class="circle" id="circle"></div>
-    <div class="countdown" id="countdown"></div>
-  </div>
-
-  <!-- Status text -->
-  <h1 id="text">Ready?</h1>
-
-  <!-- Controls -->
-  <div class="controls">
+    <div id="breathingText">Ready</div>
     <button id="startBtn">Start</button>
-    <button id="pauseBtn">Pause</button>
-    <button id="stopBtn">Stop</button>
-    <button id="toggleThemeBtn">🌙 / ☀️</button>
   </div>
 
-  <!-- Link to local JS -->
-  <script src="script.js"></script>
+  <script>
+    /* =========================
+       BREATHING CONFIG
+    ========================= */
+    const phases = [
+      { name: "Inhale", duration: 4000 },
+      { name: "Hold", duration: 4000 },
+      { name: "Exhale", duration: 6000 },
+      { name: "Hold", duration: 2000 }
+    ];
+
+    /* =========================
+       STATE
+    ========================= */
+    let phaseIndex = 0;
+    let timer = null;
+    let isRunning = false;
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+    const textEl = document.getElementById("breathingText");
+    const startBtn = document.getElementById("startBtn");
+
+    /* =========================
+       CORE LOGIC
+    ========================= */
+    function startBreathing() {
+      if (isRunning) return;
+
+      isRunning = true;
+      phaseIndex = 0;
+      runPhase();
+    }
+
+    function runPhase() {
+      if (!isRunning) return;
+
+      const phase = phases[phaseIndex];
+      textEl.textContent = phase.name;
+
+      timer = setTimeout(() => {
+        phaseIndex = (phaseIndex + 1) % phases.length;
+        runPhase();
+      }, phase.duration);
+    }
+
+    /* =========================
+       OPTIONAL STOP / RESET
+    ========================= */
+    function stopBreathing() {
+      isRunning = false;
+      clearTimeout(timer);
+      timer = null;
+      textEl.textContent = "Ready";
+    }
+
+    /* =========================
+       EVENTS
+    ========================= */
+    startBtn.addEventListener("click", startBreathing);
+  </script>
 </body>
 </html>
