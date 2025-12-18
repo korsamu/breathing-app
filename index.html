@@ -1,43 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<div class="settings-top">
+  <label>Inhale (sec): <input type="number" id="inhaleInput" value="4"></label>
+  <label>Hold (sec): <input type="number" id="holdInput" value="7"></label>
+  <label>Exhale (sec): <input type="number" id="exhaleInput" value="8"></label>
+
+</div>
+
+<div class="container">
+  <div class="circle" id="circle"></div>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<h1 id="text">Ready?</h1>
+
+<div class="controls">
+  <button id="startBtn">Start</button>
+  <button id="pauseBtn">Pause</button>
+  <button id="stopBtn">Stop</button>
+  <button id="toggleThemeBtn">Dark / Light</button>
+</div>
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Breathe</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Link to local CSS -->
-  <link rel="stylesheet" href="style.css">
+  ...
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Timing settings at top -->
-  <div class="settings-top">
-    <label>Inhale (sec): <input type="number" id="inhaleInput" value="4" min="0"></label>
-    <label>Hold (sec): <input type="number" id="holdInput" value="7" min="0"></label>
-    <label>Exhale (sec): <input type="number" id="exhaleInput" value="8" min="0"></label>
-    <label>Hold (sec): <input type="number" id="hold2Input" value="0" min="0"></label>
-  </div>
-
-  <!-- Breathing circle and countdown -->
-  <div class="container">
-    <div class="circle" id="circle"></div>
-    <div class="countdown" id="countdown"></div>
-  </div>
-
-  <!-- Status text -->
-  <h1 id="text">Ready?</h1>
-
-  <!-- Controls -->
-  <div class="controls">
-    <button id="startBtn">Start</button>
-    <button id="pauseBtn">Pause</button>
-    <button id="stopBtn">Stop</button>
-    <button id="toggleThemeBtn">🌙 / ☀️</button>
-  </div>
-
-  <!-- Link to local JS -->
+  ...
   <script src="script.js"></script>
 </body>
-</html>
