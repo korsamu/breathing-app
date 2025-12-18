@@ -32,7 +32,7 @@ function startBreathing() {
     { label: "Inhale", duration: inhaleSec, scale: 1.5 },
     { label: "Hold", duration: holdSec, scale: 1.5 },
     { label: "Exhale", duration: exhaleSec, scale: 1 },
-    { label: "Hold", duration: holdSec, scale: 1.5 }
+  //{ label: "Hold", duration: holdSec, scale: 1.5 }
   ];
 
   phases = phases.filter(p => p.duration >= 0);
