@@ -5,14 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Breathing App</title>
 
-  <!-- Basic SEO -->
-  <meta name="description" content="Simple guided breathing app to reduce stress and improve focus." />
-  <meta name="keywords" content="breathing, meditation, relaxation, mindfulness" />
-
   <style>
     body {
       margin: 0;
-      padding: 0;
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -40,12 +35,6 @@
       cursor: pointer;
       background: #38bdf8;
       color: #020617;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    button:hover {
-      transform: scale(1.05);
-      opacity: 0.9;
     }
   </style>
 </head>
@@ -56,13 +45,8 @@
     <button id="startBtn">Start Breathing</button>
   </div>
 
-  <!-- =========================
-       FIXED BREATHING SCRIPT
-  ========================== -->
+  <!-- ORIGINAL JS -->
   <script>
-    /* =========================
-       BREATHING CONFIG
-    ========================== */
     const phases = [
       { name: "Inhale", duration: 4000 },
       { name: "Hold", duration: 4000 },
@@ -70,24 +54,15 @@
       { name: "Hold", duration: 2000 }
     ];
 
-    /* =========================
-       STATE
-    ========================== */
     let phaseIndex = 0;
     let timer = null;
     let isRunning = false;
 
-    /* =========================
-       ELEMENTS
-    ========================== */
     const textEl = document.getElementById("breathingText");
     const startBtn = document.getElementById("startBtn");
 
-    /* =========================
-       CORE LOGIC
-    ========================== */
     function startBreathing() {
-      if (isRunning) return; // prevent stacking
+      if (isRunning) return;
 
       isRunning = true;
       phaseIndex = 0;
@@ -106,20 +81,6 @@
       }, phase.duration);
     }
 
-    /* =========================
-       OPTIONAL STOP / RESET
-       (safe to remove if unused)
-    ========================== */
-    function stopBreathing() {
-      isRunning = false;
-      clearTimeout(timer);
-      timer = null;
-      textEl.textContent = "Ready";
-    }
-
-    /* =========================
-       EVENTS
-    ========================== */
     startBtn.addEventListener("click", startBreathing);
   </script>
 </body>
