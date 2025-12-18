@@ -1,32 +1,19 @@
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<div class="settings-top">
-  <label>Inhale (sec): <input type="number" id="inhaleInput" value="4"></label>
-  <label>Hold (sec): <input type="number" id="holdInput" value="7"></label>
-  <label>Exhale (sec): <input type="number" id="exhaleInput" value="8"></label>
-
-</div>
-
-<div class="container">
-  <div class="circle" id="circle"></div>
-  <div class="countdown" id="countdown"></div>
-</div>
-
-<h1 id="text">Ready?</h1>
-
-<div class="controls">
-  <button id="startBtn">Start</button>
-  <button id="pauseBtn">Pause</button>
-  <button id="stopBtn">Stop</button>
-  <button id="toggleThemeBtn">Dark / Light</button>
-</div>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  ...
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing App</title>
+  <!-- Link external CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  ...
+  <div class="container">
+    <div id="breathingText">Ready</div>
+    <button id="startBtn">Start Breathing</button>
+  </div>
+
+  <!-- Link external JS -->
   <script src="script.js"></script>
 </body>
+</html>
