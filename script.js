@@ -1,116 +1,62 @@
-const circle = document.getElementById("circle");
-const text = document.getElementById("text");
-const countdown = document.getElementById("countdown");
+<script>
+/* =========================
+   BREATHING CONFIG
+========================= */
+const phases = [
+  { name: "Inhale", duration: 4000 },
+  { name: "Hold", duration: 4000 },
+  { name: "Exhale", duration: 6000 },
+  { name: "Hold", duration: 2000 }
+];
 
+/* =========================
+   STATE
+========================= */
+let phaseIndex = 0;
+let timer = null;
+let isRunning = false;
+
+/* =========================
+   ELEMENTS
+========================= */
+const textEl = document.getElementById("breathingText");
 const startBtn = document.getElementById("startBtn");
-const pauseBtn = document.getElementById("pauseBtn");
-const stopBtn = document.getElementById("stopBtn");
-const toggleThemeBtn = document.getElementById("toggleThemeBtn");
 
-const inhaleInput = document.getElementById("inhaleInput");
-const holdInput = document.getElementById("holdInput");
-const exhaleInput = document.getElementById("exhaleInput");
-
-let timerInterval;
-let isPaused = false;
-let isStopped = false;
-
-// Phases
-let phases = [];
-let currentPhaseIndex = 0;
-let phaseRemaining = 0;
-
+/* =========================
+   CORE LOGIC
+========================= */
 function startBreathing() {
-  isPaused = false;
-  isStopped = false;
+  if (isRunning) return; // prevent multiple starts
 
-  const inhaleSec = parseInt(inhaleInput.value) || 0;
-  const holdSec = parseInt(holdInput.value) || 0;
-  const exhaleSec = parseInt(exhaleInput.value) || 0;
-
-  phases = [
-    { label: "Inhale", duration: inhaleSec, scale: 1.5 },
-    { label: "Hold", duration: holdSec, scale: 1.5 },
-    { label: "Exhale", duration: exhaleSec, scale: 1 },
-    { label: "Hold", duration: holdSec, scale: 1.5 }
-  ];
-
-  phases = phases.filter(p => p.duration >= 0);
-
-  if (phases.length === 0) {
-    text.innerText = "Ready?";
-    countdown.innerText = "";
-    circle.style.transform = "scale(1)";
-    circle.style.boxShadow = "0 0 20px rgba(56,189,248,0.5)";
-    return;
-  }
-
-  currentPhaseIndex = 0;
-  phaseRemaining = phases[currentPhaseIndex].duration;
-
-  updatePhaseVisual(phases[currentPhaseIndex]);
-
-  clearInterval(timerInterval);
-  timerInterval = setInterval(tick, 1000);
+  isRunning = true;
+  phaseIndex = 0;
+  runPhase();
 }
 
-function tick() {
-  if (isPaused || isStopped) return;
+function runPhase() {
+  if (!isRunning) return;
 
-  if (phaseRemaining > 0) {
-    phaseRemaining--;
-    countdown.innerText = phaseRemaining > 0 ? phaseRemaining : "";
-  }
+  const phase = phases[phaseIndex];
+  textEl.textContent = phase.name;
 
-  if (phaseRemaining <= 0) {
-    currentPhaseIndex++;
-    if (currentPhaseIndex >= phases.length) {
-      currentPhaseIndex = 0;
-    }
-    phaseRemaining = phases[currentPhaseIndex].duration;
-
-    if (phaseRemaining > 0) {
-      updatePhaseVisual(phases[currentPhaseIndex]);
-    } else {
-      tick(); // skip zero-duration phase
-    }
-  }
+  timer = setTimeout(() => {
+    phaseIndex = (phaseIndex + 1) % phases.length;
+    runPhase();
+  }, phase.duration);
 }
 
-function updatePhaseVisual(phase) {
-  text.innerText = phase.label;
-  circle.style.transition = `transform ${phase.duration}s ease-in-out, box-shadow ${phase.duration}s ease-in-out`;
-  circle.style.transform = `scale(${phase.scale})`;
-  circle.style.boxShadow = `0 0 ${phase.scale * 15}px rgba(56,189,248,${phase.scale/1.5})`;
-  countdown.innerText = phase.duration;
+/* =========================
+   OPTIONAL STOP / RESET
+========================= */
+function stopBreathing() {
+  isRunning = false;
+  clearTimeout(timer);
+  timer = null;
+  textEl.textContent = "Ready";
 }
 
-// Controls
+/* =========================
+   EVENTS
+========================= */
 startBtn.addEventListener("click", startBreathing);
-
-pauseBtn.addEventListener("click", () => {
-  isPaused = !isPaused;
-  pauseBtn.innerText = isPaused ? "Resume" : "Pause";
-});
-
-stopBtn.addEventListener("click", () => {
-  isStopped = true;
-  clearInterval(timerInterval);
-  countdown.innerText = "";
-  text.innerText = "Ready?";
-  circle.style.transform = "scale(1)";
-  circle.style.boxShadow = "0 0 20px rgba(56,189,248,0.5)";
-});
-
-// Dark / Light toggle
-let isDark = true;
-toggleThemeBtn.addEventListener("click", () => {
-  isDark = !isDark;
-  if (isDark) {
-    document.body.style.background = "#0f172a";
-    document.body.style.color = "#e5e7eb";
-  } else {
-    document.body.style.background = "#f3f4f6";
-    document.body.style.color = "#111827";
-  }
-});
+</script>
