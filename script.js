@@ -1,12 +1,12 @@
 <script>
 /* =========================
-   BREATHING CONFIG
+   BREATHING PHASE CONFIG
 ========================= */
 const phases = [
   { name: "Inhale", duration: 4000 },
-  { name: "Hold", duration: 4000 },
+  { name: "Hold (After Inhale)", duration: 4000 },
   { name: "Exhale", duration: 6000 },
-  { name: "Hold", duration: 2000 }
+  { name: "Hold (After Exhale)", duration: 2000 }
 ];
 
 /* =========================
@@ -37,7 +37,12 @@ function runPhase() {
   if (!isRunning) return;
 
   const phase = phases[phaseIndex];
-  textEl.textContent = phase.name;
+
+  // Force repaint even if text were ever identical
+  textEl.textContent = "";
+  requestAnimationFrame(() => {
+    textEl.textContent = phase.name;
+  });
 
   timer = setTimeout(() => {
     phaseIndex = (phaseIndex + 1) % phases.length;
@@ -46,7 +51,7 @@ function runPhase() {
 }
 
 /* =========================
-   OPTIONAL STOP / RESET
+   OPTIONAL RESET (safe)
 ========================= */
 function stopBreathing() {
   isRunning = false;
