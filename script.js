@@ -54,7 +54,7 @@ function runCycle() {
     { label: "Inhale", duration: inhaleSec, scale: 1.5 },
     { label: "Hold1", duration: holdSec, scale: 1.5 },
     { label: "Exhale", duration: exhaleSec, scale: 1 },
-    { label: "Hold2", duration: holdSec, scale: 1.5 },
+   // { label: "Hold2", duration: holdSec, scale: 1.5 },
   ];
 
   let index = 0;
