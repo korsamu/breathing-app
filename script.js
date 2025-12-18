@@ -1,9 +1,8 @@
-// ====== Breathing Phases ======
+// ====== Breathing Phases (second hold removed) ======
 const phases = [
   { name: "Inhale", duration: 4000 },
   { name: "Hold", duration: 4000 },
-  { name: "Exhale", duration: 6000 },
-  { name: "Hold", duration: 2000 }
+  { name: "Exhale", duration: 6000 }
 ];
 
 // ====== State ======
@@ -17,7 +16,7 @@ const startBtn = document.getElementById("startBtn");
 
 // ====== Core Logic ======
 function startBreathing() {
-  if (isRunning) return; // prevent multiple starts
+  if (isRunning) return;
   isRunning = true;
   phaseIndex = 0;
   runPhase();
@@ -30,7 +29,7 @@ function runPhase() {
   textEl.textContent = phase.name;
 
   timer = setTimeout(() => {
-    phaseIndex = (phaseIndex + 1) % phases.length;
+    phaseIndex = (phaseIndex + 1) % phases.length; // loop through phases
     runPhase();
   }, phase.duration);
 }
